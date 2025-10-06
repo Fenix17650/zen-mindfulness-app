@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Space - Tu Espacio de Mindfulness</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-."
+         crossorigin="anonymous"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 10px 0;
+        }
+
+        /* Anuncio discreto en header */
+        .ad-header {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .premium-banner {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        }
+
+        .premium-banner h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .premium-btn {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .premium-btn:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .exercise-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .exercise-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .exercise-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        .exercise-card p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76,175,80,0.4);
+        }
+
+        /* Anuncio entre ejercicios */
+        .ad-between {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .exercise-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .exercise-screen.active {
+            display: block;
+        }
+
+        .breathing-circle {
+            width: 200px;
+            height: 200px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 4s ease-in-out;
+        }
+
+        .breathing-circle.inhale {
+            transform: scale(1.3);
+            border-color: #4CAF50;
+            background: rgba(76,175,80,0.1);
+        }
+
+        .breathing-circle.exhale {
+            transform: scale(0.8);
+            border-color: #2196F3;
+            background: rgba(33,150,243,0.1);
+        }
+
+        .timer {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .controls {
+            margin: 30px 0;
+        }
+
+        .control-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .back-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Anuncio después de ejercicio */
+        .ad-completion {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .completion-message {
+            background: rgba(76,175,80,0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .breathing-circle {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Pantalla Principal -->
+        <div id="mainScreen">
+            <div class="header">
+                <h1>🧘‍♀️ Zen Space</h1>
+                <p>Tu espacio personal de mindfulness y relajación</p>
+            </div>
+
+            <!-- Anuncio discreto en header -->
+            <div class="ad-header">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-."
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+
+            <!-- Banner Premium -->
+            <div class="premium-banner">
+                <h3>✨ ¿Te gusta la experiencia?</h3>
+                <p>Desbloquea la versión premium sin anuncios + ejercicios exclusivos</p>
+                <button class="premium-btn" onclick="window.open('https://gumroad.com/tu-producto', '_blank')">
+                    Obtener Premium $4.99
+                </button>
+            </div>
+
+            <div class="exercises-grid">
+                <div class="exercise-card">
+                    <span class="exercise-icon">🌬️</span>
+                    <h3>Respiración Consciente</h3>
+                    <p>Ejercicio guiado de respiración para calmar la mente y reducir el estrés</p>
+                    <button class="start-btn" onclick="startExercise('breathing')">Comenzar</button>
+                </div>
+
+                <div class="exercise-card">
+                    <span class="exercise-icon">🧘‍♂️</span>
+                    <h3>Meditación Básica</h3>
+                    <p>Introducción a la meditación mindfulness para principiantes</p>
+                    <button class="start-btn" onclick="startExercise('meditation')">Comenzar</button>
+                </div>
+
+                <!-- Anuncio entre ejercicios -->
+                <div class="ad-between">
+                    <p style="margin-bottom: 10px; opacity: 0.8;">Contenido patrocinado</p>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-."
+                         data-ad-slot="9876543210"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+
+                <div class="exercise-card">
+                    <span class="exercise-icon">🌅</span>
+                    <h3>Relajación Matutina</h3>
+                    <p>Comienza tu día con energía positiva y claridad mental</p>
+                    <button class="start-btn" onclick="startExercise('morning')">Comenzar</button>
+                </div>
+
+                <div class="exercise-card">
+                    <span class="exercise-icon">🌙</span>
+                    <h3>Descanso Nocturno</h3>
+                    <p>Prepara tu mente para un sueño reparador y profundo</p>
+                    <button class="start-btn" onclick="startExercise('night')">Comenzar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Ejercicio -->
+        <div id="exerciseScreen" class="exercise-screen">
+            <h2 id="exerciseTitle">Respiración Consciente</h2>
+            <div id="breathingCircle" class="breathing-circle">
+                <span id="breathingText">Respira</span>
+            </div>
+            <div id="timer" class="timer">5:00</div>
+            <div id="instructions">
+                <p>Sigue el círculo con tu respiración. Inhala cuando crezca, exhala cuando se contraiga.</p>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" onclick="pauseExercise()">⏸️ Pausar</button>
+                <button class="control-btn" onclick="resumeExercise()">▶️ Continuar</button>
+            </div>
+
+            <button class="back-btn" onclick="endExercise()">Finalizar Sesión</button>
+        </div>
+
+        <!-- Pantalla de Completado -->
+        <div id="completionScreen" class="exercise-screen">
+            <div class="completion-message">
+                <h2>🎉 ¡Excelente trabajo!</h2>
+                <p>Has completado tu sesión de mindfulness. ¿Cómo te sientes?</p>
+            </div>
+
+            <!-- Anuncio después de completar -->
+            <div class="ad-completion">
+                <p style="margin-bottom: 10px; opacity: 0.8;">Gracias por usar Zen Space</p>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-."
+                     data-ad-slot="1357924680"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+
+            <div class="premium-banner">
+                <h3>🌟 ¿Disfrutaste la experiencia?</h3>
+                <p>Accede a más ejercicios y una experiencia sin interrupciones</p>
+                <button class="premium-btn" onclick="window.open('https://gumroad.com/tu-producto', '_blank')">
+                    Versión Premium $4.99
+                </button>
+            </div>
+
+            <button class="back-btn" onclick="goHome()">Volver al Inicio</button>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar anuncios
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        let currentExercise = null;
+        let exerciseTimer = null;
+        let breathingTimer = null;
+        let timeRemaining = 300; // 5 minutos
+        let isPaused = false;
+
+        const exercises = {
+            breathing: {
+                title: "Respiración Consciente",
+                duration: 300,
+                instructions: "Sigue el círculo con tu respiración. Inhala cuando crezca, exhala cuando se contraiga."
+            },
+            meditation: {
+                title: "Meditación Básica",
+                duration: 600,
+                instructions: "Cierra los ojos y enfócate en tu respiración. Observa tus pensamientos sin juzgarlos."
+            },
+            morning: {
+                title: "Relajación Matutina",
+                duration: 480,
+                instructions: "Respira profundamente y visualiza un día lleno de posibilidades positivas."
+            },
+            night: {
+                title: "Descanso Nocturno",
+                duration: 720,
+                instructions: "Relaja cada parte de tu cuerpo y deja que tu mente se prepare para el descanso."
+            }
+        };
+
+        function startExercise(type) {
+            currentExercise = exercises[type];
+            timeRemaining = currentExercise.duration;
+            
+            document.getElementById('mainScreen').style.display = 'none';
+            document.getElementById('exerciseScreen').classList.add('active');
+            document.getElementById('exerciseTitle').textContent = currentExercise.title;
+            document.getElementById('instructions').innerHTML = `<p>${currentExercise.instructions}</p>`;
+            
+            startTimer();
+            if (type === 'breathing') {
+                startBreathingAnimation();
+            }
+        }
+
+        function startTimer() {
+            exerciseTimer = setInterval(() => {
+                if (!isPaused) {
+                    timeRemaining--;
+                    updateTimerDisplay();
+                    
+                    if (timeRemaining <= 0) {
+                        completeExercise();
+                    }
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function startBreathingAnimation() {
+            const circle = document.getElementById('breathingCircle');
+            const text = document.getElementById('breathingText');
+            let isInhaling = true;
+            
+            breathingTimer = setInterval(() => {
+                if (!isPaused) {
+                    if (isInhaling) {
+                        circle.classList.remove('exhale');
+                        circle.classList.add('inhale');
+                        text.textContent = 'Inhala...';
+                    } else {
+                        circle.classList.remove('inhale');
+                        circle.classList.add('exhale');
+                        text.textContent = 'Exhala...';
+                    }
+                    isInhaling = !isInhaling;
+                }
+            }, 4000);
+        }
+
+        function pauseExercise() {
+            isPaused = true;
+        }
+
+        function resumeExercise() {
+            isPaused = false;
+        }
+
+        function endExercise() {
+            clearInterval(exerciseTimer);
+            clearInterval(breathingTimer);
+            completeExercise();
+        }
+
+        function completeExercise() {
+            clearInterval(exerciseTimer);
+            clearInterval(breathingTimer);
+            
+            document.getElementById('exerciseScreen').classList.remove('active');
+            document.getElementById('completionScreen').classList.add('active');
+            
+            // Cargar anuncio de completado
+            setTimeout(() => {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            }, 1000);
+        }
+
+        function goHome() {
+            document.getElementById('completionScreen').classList.remove('active');
+            document.getElementById('mainScreen').style.display = 'block';
+            
+            // Reset
+            const circle = document.getElementById('breathingCircle');
+            circle.classList.remove('inhale', 'exhale');
+            isPaused = false;
+        }
+
+        // Inicializar la aplicación
+        updateTimerDisplay();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a3bde6a784b488',t:'MTc1OTczODg1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
