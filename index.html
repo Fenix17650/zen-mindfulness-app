@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="google348705689198c5c4">
     <title>Zen Space - Tu Espacio de Mindfulness</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-."
+
+    <!-- Google AdSense: cliente configurado -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6763496886385589"
          crossorigin="anonymous"></script>
+
     <style>
         body {
             box-sizing: border-box;
@@ -276,10 +279,13 @@
             <div class="ad-header">
                 <ins class="adsbygoogle"
                      style="display:block"
-                     data-ad-client="ca-pub-."
+                     data-ad-client="ca-pub-6763496886385589"
                      data-ad-slot="1234567890"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
 
             <!-- Banner Premium -->
@@ -311,10 +317,13 @@
                     <p style="margin-bottom: 10px; opacity: 0.8;">Contenido patrocinado</p>
                     <ins class="adsbygoogle"
                          style="display:block"
-                         data-ad-client="ca-pub-."
+                         data-ad-client="ca-pub-6763496886385589"
                          data-ad-slot="9876543210"
                          data-ad-format="auto"
                          data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
 
                 <div class="exercise-card">
@@ -364,10 +373,13 @@
                 <p style="margin-bottom: 10px; opacity: 0.8;">Gracias por usar Zen Space</p>
                 <ins class="adsbygoogle"
                      style="display:block"
-                     data-ad-client="ca-pub-."
+                     data-ad-client="ca-pub-6763496886385589"
                      data-ad-slot="1357924680"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
 
             <div class="premium-banner">
@@ -383,11 +395,7 @@
     </div>
 
     <script>
-        // Inicializar anuncios
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-
+        // Inicializar la aplicación (las unidades de anuncio ya se inicializan justo después de cada <ins>)
         let currentExercise = null;
         let exerciseTimer = null;
         let breathingTimer = null;
@@ -433,6 +441,7 @@
         }
 
         function startTimer() {
+            clearInterval(exerciseTimer);
             exerciseTimer = setInterval(() => {
                 if (!isPaused) {
                     timeRemaining--;
@@ -457,6 +466,7 @@
             const text = document.getElementById('breathingText');
             let isInhaling = true;
             
+            clearInterval(breathingTimer);
             breathingTimer = setInterval(() => {
                 if (!isPaused) {
                     if (isInhaling) {
@@ -493,11 +503,6 @@
             
             document.getElementById('exerciseScreen').classList.remove('active');
             document.getElementById('completionScreen').classList.add('active');
-            
-            // Cargar anuncio de completado
-            setTimeout(() => {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }, 1000);
         }
 
         function goHome() {
@@ -513,5 +518,5 @@
         // Inicializar la aplicación
         updateTimerDisplay();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a3ec3fa175b488',t:'MTc1OTc0MDc0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
